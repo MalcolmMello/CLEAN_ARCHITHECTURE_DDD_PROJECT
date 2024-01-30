@@ -17,6 +17,8 @@ namespace BuberDinner.Domain.MenuReview
         public DinnerId DinnerId { get; } 
         private MenuReview(
             MenuReviewId menuReviewId,
+            int rating,
+            string comment,
             HostId hostId,
             MenuId menuId,
             GuestId guestId,
@@ -26,6 +28,8 @@ namespace BuberDinner.Domain.MenuReview
         )
         : base(menuReviewId)
         {
+            Rating = rating;
+            Comment = comment;
             HostId = hostId;
             MenuId = menuId;
             GuestId = guestId;
@@ -34,6 +38,8 @@ namespace BuberDinner.Domain.MenuReview
             UpdatedDateTime = updatedDateTime;
         }
         public static MenuReview Create(
+            int rating,
+            string comment,
             HostId hostId,
             MenuId menuId,
             GuestId guestId,
@@ -42,6 +48,8 @@ namespace BuberDinner.Domain.MenuReview
         {
             return new(
                 MenuReviewId.CreateUnique(),
+                rating,
+                comment,
                 hostId,
                 menuId,
                 guestId,
