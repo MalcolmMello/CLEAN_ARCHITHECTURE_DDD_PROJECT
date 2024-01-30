@@ -13,23 +13,27 @@ namespace BuberDinner.Domain.Menu.Entities
         private MenuSection(
             MenuSectionId menuSectionId,
             string name,
-            string description
+            string description,
+            List<MenuItem> menuItems
         )
         : base(menuSectionId)
         {
             Name = name;
             Description = description;
+            _items = menuItems;
         }
 
         public static MenuSection Create(
             string name,
-            string description
+            string description,
+            List<MenuItem> items
         )
         {
             return new(
                 MenuSectionId.CreateUnique(),
                 name,
-                description
+                description,
+                items
             );
         }
     }
