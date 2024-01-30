@@ -21,6 +21,7 @@ namespace BuberDinner.Domain.Host
             string firstName,
             string lastName,
             UserId userId,
+            string profileImage,
             DateTime createdDateTime,
             DateTime updatedDateTime
         )
@@ -29,6 +30,7 @@ namespace BuberDinner.Domain.Host
             FirstName = firstName;
             LastName = lastName;
             UserId = userId;
+            ProfileImage = profileImage;
             CreatedDateTime = createdDateTime;
             UpdatedDateTime = updatedDateTime;
         }
@@ -36,7 +38,8 @@ namespace BuberDinner.Domain.Host
         public static Host Create(
             string firstName,
             string lastName,
-            UserId userId
+            UserId userId,
+            string profileImage
         )
         {
             return new(
@@ -44,6 +47,7 @@ namespace BuberDinner.Domain.Host
                 firstName,
                 lastName,
                 userId,
+                profileImage,
                 DateTime.UtcNow,
                 DateTime.UtcNow
             );
