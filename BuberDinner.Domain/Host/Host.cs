@@ -6,7 +6,7 @@ using BuberDinner.Domain.User.ValueObjects;
 
 namespace BuberDinner.Domain.Host
 {
-    public sealed class Host : AggregateRoot<HostId>
+    public sealed class Host : AggregateRoot<HostId, Guid>
     {
         public string FirstName { get; }
         public string LastName { get; }

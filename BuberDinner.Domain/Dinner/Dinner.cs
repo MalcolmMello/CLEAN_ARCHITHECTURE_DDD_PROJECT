@@ -13,7 +13,7 @@ namespace BuberDinner.Domain.Dinner
         public static readonly string Ended = "Ended";
         public static readonly string Cancelled = "Cancelled";
     }
-    public sealed class Dinner : AggregateRoot<DinnerId>
+    public sealed class Dinner : AggregateRoot<DinnerId, Guid>
     {
         private readonly List<Reservation> _reservations = new();
         public string Name { get; }

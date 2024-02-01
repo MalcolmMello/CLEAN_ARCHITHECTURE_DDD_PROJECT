@@ -2,9 +2,9 @@ using BuberDinner.Domain.Common.Models;
 
 namespace BuberDinner.Domain.Guest.ValueObjects
 {
-    public sealed class RatingsId : ValueObject
+    public sealed class RatingsId : AggregateRootId<Guid>
     {
-        public Guid Value { get; }
+        public override Guid Value { get; protected set; }
 
         private RatingsId(Guid value)
         {

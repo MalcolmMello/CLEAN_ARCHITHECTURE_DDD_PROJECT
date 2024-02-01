@@ -2,9 +2,9 @@ using BuberDinner.Domain.Common.Models;
 
 namespace BuberDinner.Domain.Dinner.ValueObjects
 {
-    public sealed class LocationId : ValueObject
+    public sealed class LocationId : AggregateRootId<Guid>
     {
-        public Guid Value { get; }
+        public override Guid Value { get; protected set; }
 
         private LocationId(Guid value)
         {
