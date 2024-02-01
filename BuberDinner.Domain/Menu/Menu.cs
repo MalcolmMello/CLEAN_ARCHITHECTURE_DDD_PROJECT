@@ -3,6 +3,7 @@ using BuberDinner.Domain.Common.ValueObjects;
 using BuberDinner.Domain.Dinner.ValueObjects;
 using BuberDinner.Domain.Host.ValueObjects;
 using BuberDinner.Domain.Menu.Entities;
+using BuberDinner.Domain.Menu.Events;
 using BuberDinner.Domain.Menu.ValueObjects;
 using BuberDinner.Domain.MenuReview.ValueObjects;
 
@@ -49,7 +50,7 @@ namespace BuberDinner.Domain.Menu
             List<MenuSection> sections
         )
         {
-            return new(
+            var menu = new Menu(
                 MenuId.CreateUnique(),
                 name,
                 description,
@@ -58,6 +59,10 @@ namespace BuberDinner.Domain.Menu
                 DateTime.UtcNow,
                 DateTime.UtcNow            
             );
+
+            menu.AddDomainEvent(new MenuCreated(menu));
+
+            return menu;
         }
         public IReadOnlyList<MenuSection> Sections => _sections.AsReadOnly();
         public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
