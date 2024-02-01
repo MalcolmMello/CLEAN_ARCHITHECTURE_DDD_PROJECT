@@ -6,8 +6,8 @@ namespace BuberDinner.Domain.Menu.Entities
     public sealed class MenuItem : Entity<MenuItemId>
     {
         private readonly List<MenuItem> _items = new();
-        public string Name { get; }
-        public string Description { get; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
 
         private MenuItem(MenuItemId menuItemId, string name, string description)
             : base(menuItemId)
@@ -15,6 +15,12 @@ namespace BuberDinner.Domain.Menu.Entities
             Name = name;
             Description = description;
         }
+
+        #pragma warning disable CS8618
+        private MenuItem()
+        {
+        }
+        #pragma warning restore CS8618
 
         public static MenuItem Create(
             string name, 
